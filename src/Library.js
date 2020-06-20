@@ -25,9 +25,18 @@ class Library extends Component {
     ]
   }
 
+  filterShelf(shelfName) {
+    const books = this.state.books
+    return(
+      books.filter((book)=>{
+        return book.shelf === shelfName;
+      })
+    )
+  }
+
     render() {
       return (
-        <Shelf books={this.state.books} shelfName="Reading" />
+        <Shelf books={this.filterShelf("Want to Read")} shelfName="Currently Reading" />
       )
     }
   }
