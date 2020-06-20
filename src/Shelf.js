@@ -8,7 +8,6 @@ function Shelf(props) {
       <h2 className = "bookshelf-title">{shelfName}</h2> 
       <div className = "bookshelf-books">
         <ol className = "books-grid">
-          {console.log(books[0])}
           <Book book={books[0]} />
         </ol>
       </div>
