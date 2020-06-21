@@ -8,7 +8,9 @@ function Shelf(props) {
       <h2 className = "bookshelf-title">{shelfName}</h2> 
       <div className = "bookshelf-books">
         <ol className = "books-grid">
-          <Book book={books[0]} />
+          {books.map((b) => (
+            <Book key={b.title} book={b} />
+          ))}
         </ol>
       </div>
     </div>
