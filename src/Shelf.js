@@ -5,7 +5,7 @@ function Shelf(props) {
   const {books, shelfName} = props
   return ( 
     <div className = "bookshelf" >
-      <h2 className = "bookshelf-title">{shelfName}</h2> 
+      <h2 className = "bookshelf-title">{shelfName.sentence}</h2> 
       <div className = "bookshelf-books">
         <ol className = "books-grid">
           {books.map((b) => (
