@@ -4,6 +4,7 @@ import './App.css'
 import Library from './Library'
 import BookSearch from './BookSearch'
 import { Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class BooksApp extends React.Component {
 
@@ -17,7 +18,12 @@ class BooksApp extends React.Component {
           </div>
         </div>
         <Route exact path='/' render={() => (
-          <Library />
+          <div>
+            <Library />
+            <div className="open-search">
+              <Link to='/search'>Add a book</Link>
+            </div>            
+          </div>
         )} />
         <Route path='/search' render={() => (
           <BookSearch />
