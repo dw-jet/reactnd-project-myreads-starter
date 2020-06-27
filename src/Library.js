@@ -22,13 +22,24 @@ class Library extends Component {
     ]
   }
 
-  componentDidMount() {
+  updateShelf = (book, newShelf) => {
+    BooksAPI.update(book, newShelf)
+      .then(() => {
+        this.loadBooks()
+      })
+  }
+
+  loadBooks() {
     BooksAPI.getAll()
       .then((books) => {
         this.setState(() => ({
           books
         }))
       })
+  }
+
+  componentDidMount() {
+    this.loadBooks()
   }
 
   filterShelf(shelfName) {
@@ -43,7 +54,7 @@ class Library extends Component {
     render() {
       return(
         this.state.shelves.map((shelf) => {
-          return <Shelf key={shelf.code} books={this.filterShelf(shelf)} shelfName={shelf} />
+          return <Shelf key={shelf.code} books={this.filterShelf(shelf)} shelfName={shelf} update = {this.updateShelf} />
         })
       )  
     }
