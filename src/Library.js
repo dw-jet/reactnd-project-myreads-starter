@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Shelf from './Shelf'
 
-class Library extends Component {
-  render() {
-    return(
-      this.props.shelves.map((shelf) => {
-        return <Shelf 
-        key={shelf.code} 
-        books={this.props.filterShelf(this.props.books, shelf)} 
-        shelfName={shelf} 
-        update={this.props.updateShelf} />
-      })
-    )  
-  }
+function Library(props) {
+  const {shelves, books, filterShelf, updateShelf} = props
+  return(
+    shelves.map((shelf) => {
+      return <Shelf 
+      key={shelf.code} 
+      books={filterShelf(books, shelf)} 
+      shelfName={shelf} 
+      update={updateShelf} />
+    })
+  )
 }
   
-  export default Library
+export default Library
