@@ -77,14 +77,14 @@ class BooksApp extends React.Component {
         </div>
         <Route exact path='/' render={() => (
           <div>
-            <Library shelves={this.state.shelves} books={this.state.books} filterShelf={this.filterShelf} updateShelf={this.updateShelf} />
+            <Library shelves={this.state.shelves} books={this.state.books} filterShelf={this.filterShelf} update={this.updateShelf} />
             <div className="open-search">
               <Link to='/search'>Add a book</Link>
             </div>            
           </div>
         )} />
         <Route path='/search' render={() => (
-          <BookSearch books={this.state.searchResults} searchBooks={this.searchBooks} />
+          <BookSearch books={this.state.searchResults} searchBooks={this.searchBooks} update={this.updateShelf} />
         )} />
       </div>
     )
