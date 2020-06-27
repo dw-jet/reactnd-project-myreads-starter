@@ -10,6 +10,8 @@ class BooksApp extends React.Component {
   state = {
     books: [],
 
+    searchResults: [],
+
     shelves: [
       {
         sentence: 'Currently Reading', 
@@ -57,9 +59,9 @@ class BooksApp extends React.Component {
   searchBooks = (e) => {
     if (e) {
       BooksAPI.search(e.target.value)
-      .then((books) => {
+      .then((searchResults) => {
         this.setState(() => ({
-          books
+          searchResults
         }))
       })
     }
@@ -82,7 +84,7 @@ class BooksApp extends React.Component {
           </div>
         )} />
         <Route path='/search' render={() => (
-          <BookSearch />
+          <BookSearch books={this.state.searchResults} searchBooks={this.searchBooks} />
         )} />
       </div>
     )
