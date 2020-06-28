@@ -9,7 +9,7 @@ function ShelfChanger(props) {
           const newShelf = e.target.value
           update(book, newShelf)
         }}
-        value={"none"}
+        value={book.shelf}
       >
         <option disabled > Move to... </option> 
         <option value = "currentlyReading"> Currently Reading </option> 
