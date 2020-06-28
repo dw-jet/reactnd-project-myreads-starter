@@ -1,15 +1,16 @@
 import React from 'react'
 import Shelf from './Shelf'
+import PropTypes from 'prop-types'
 
 function Library(props) {
-  const {shelves, books, filterShelf, updateShelf} = props
+  const {shelves, books, filterShelf, update} = props
   return(
     shelves.map((shelf) => {
       return <Shelf 
       key={shelf.code} 
       books={filterShelf(books, shelf)} 
       shelfName={shelf} 
-      update={updateShelf} />
+      update={update} />
     })
   )
 }
