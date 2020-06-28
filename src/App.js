@@ -43,6 +43,13 @@ class BooksApp extends React.Component {
         }))
       })
   }
+
+  getBookShelf = (bookId) => {
+    const book = this.state.books.find((book) => book.id === bookId)
+    if (book) {
+      return book.shelf
+    }
+  }
   
   componentDidMount() {
     this.loadBooks()
@@ -60,6 +67,10 @@ class BooksApp extends React.Component {
     if (e) {
       BooksAPI.search(e.target.value)
       .then((searchResults) => {
+        for (const result of searchResults) {
+          const shelf = this.getBookShelf(result.id)
+          shelf ? result.shelf = shelf : result.shelf = 'none'
+        }
         this.setState(() => ({
           searchResults
         }))
