@@ -13,5 +13,12 @@ function Library(props) {
     })
   )
 }
-  
+
+Library.propTypes = {
+  shelves: PropTypes.array.isRequired,
+  books: PropTypes.array.isRequired,
+  filterShelf: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
+}
+
 export default Library

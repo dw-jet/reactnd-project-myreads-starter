@@ -99,7 +99,7 @@ class BooksApp extends React.Component {
             <Library shelves={this.state.shelves} books={this.state.books} filterShelf={this.filterShelf} update={this.updateShelf} />
             <div className="open-search">
               <Link to='/search'>Add a book</Link>
-            </div>            
+            </div>
           </div>
         )} />
         <Route path='/search' render={() => (
