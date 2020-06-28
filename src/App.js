@@ -67,13 +67,21 @@ class BooksApp extends React.Component {
     if (e) {
       BooksAPI.search(e.target.value)
       .then((searchResults) => {
-        for (const result of searchResults) {
-          const shelf = this.getBookShelf(result.id)
-          shelf ? result.shelf = shelf : result.shelf = 'none'
+        
+        if (Array.isArray(searchResults)) {
+          for (const result of searchResults) {
+            const shelf = this.getBookShelf(result.id)
+            shelf ? result.shelf = shelf : result.shelf = 'none'
+          }
         }
+        else {
+          searchResults = []
+        }
+
         this.setState(() => ({
           searchResults
         }))
+        
       })
     }
   }
