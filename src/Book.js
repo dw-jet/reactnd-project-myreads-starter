@@ -3,18 +3,24 @@ import ShelfChanger from './ShelfChanger'
 
 function Book(props) {
   const { book, update } = props
-  return ( 
-    <li>
-      <div className="book">
-        <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
-          <ShelfChanger book={ book } update={ update } />
+  if (book.imageLinks !== undefined){
+    return ( 
+      <li>
+        <div className="book">
+          <div className="book-top">
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+            <ShelfChanger book={ book } update={ update } />
+          </div>
+          <div className="book-title">{book.title}</div>
+          {book.authors && (<div className="book-authors">{book.authors.join(" & ")}</div>) }
+          
         </div>
-        <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors.join(" & ")}</div>
-      </div>
-    </li>
-  )
+      </li>
+    )
+  }
+  else {
+    return null
+  }
 }
   
   export default Book
